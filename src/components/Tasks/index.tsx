@@ -7,9 +7,10 @@ import { Container } from "./styles";
 interface TasksProps {
     task: Task;
     checked: (task: Task) => void;
+    handleDelete: (task: Task) => void;
 }
 
-export function Tasks({ task, checked }: TasksProps) {
+export function Tasks({ task, checked, handleDelete }: TasksProps) {
     return (
         <Container taskChecked={task.checked}>
             <div>
@@ -21,7 +22,7 @@ export function Tasks({ task, checked }: TasksProps) {
                 <span>{task.description}</span>
             </div>
             <button type="button">
-                <MdDeleteOutline size={20} color="#808080" />
+                <MdDeleteOutline size={20} color="#808080" onClick={() => handleDelete(task)} />
             </button>
         </Container>
     )

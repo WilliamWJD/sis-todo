@@ -34,6 +34,10 @@ export function Home() {
         }))
     }
 
+    function handleDeleteTask(task: Task) {
+        setTasks(tasks.filter((item: Task) => item !== task));
+    }
+
     return (
         <Container>
             <Header />
@@ -42,7 +46,10 @@ export function Home() {
                 <NewTaskBox
                     handleNewTask={handleNewTask}
                 />
-                <HeaderTasks />
+                <HeaderTasks
+                    createdTasks={tasks.length}
+                    checkedTasks={tasks.filter((task: Task) => task.checked === true).length}
+                />
                 {tasks.length === 0 ?
                     (<EmptyTasks />) :
                     (
@@ -51,6 +58,7 @@ export function Home() {
                                 key={task.id}
                                 task={task}
                                 checked={handleChekedTask}
+                                handleDelete={handleDeleteTask}
                             />
                         ))
                     )

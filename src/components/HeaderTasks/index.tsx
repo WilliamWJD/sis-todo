@@ -1,15 +1,20 @@
 import { Container, BoxTasks, BoxCompleted } from "./styles";
 
-export function HeaderTasks() {
+interface HeaderTasks {
+    createdTasks: number;
+    checkedTasks: number;
+}
+
+export function HeaderTasks({ createdTasks, checkedTasks }: HeaderTasks) {
     return (
         <Container>
             <BoxTasks>
                 <strong>Tarefas criadas</strong>
-                <p>0</p>
+                <p>{createdTasks}</p>
             </BoxTasks>
             <BoxCompleted>
                 <strong>Concluídas</strong>
-                <p>0</p>
+                <p>{checkedTasks}</p>
             </BoxCompleted>
         </Container>
     )
