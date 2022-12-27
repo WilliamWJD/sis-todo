@@ -1,18 +1,23 @@
 import { MdCheckCircle, MdDeleteOutline } from 'react-icons/md'
+import { FaRegCircle } from 'react-icons/fa'
 import { Task } from '../../pages/Home';
 
 import { Container } from "./styles";
 
 interface TasksProps {
     task: Task;
+    checked: (task: Task) => void;
 }
 
-export function Tasks({ task }: TasksProps) {
-
+export function Tasks({ task, checked }: TasksProps) {
     return (
-        <Container>
+        <Container taskChecked={task.checked}>
             <div>
-                <MdCheckCircle size={24} color="#4EA8DE" />
+                {task.checked ? (
+                    <MdCheckCircle size={24} color="#5E60CE" onClick={() => checked(task)} />
+                ) : (
+                    <FaRegCircle size={24} color="#4EA8DE" onClick={() => checked(task)} />
+                )}
                 <span>{task.description}</span>
             </div>
             <button type="button">

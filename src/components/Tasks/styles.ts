@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+    taskChecked: boolean
+}
+
+export const Container = styled.div<ContainerProps>`
     width: 100%;
     height: 72px;
     background-color: ${props => props.theme.colors.gray_500};
@@ -26,6 +30,10 @@ export const Container = styled.div`
             color: ${props => props.theme.colors.gray_100};
             margin-left: 12px;
             margin-right: 12px;
+            ${props => props.taskChecked && css`
+                text-decoration: line-through;
+                color: ${props => props.theme.colors.gray_300};
+            `};
         }
     }
 

@@ -15,7 +15,7 @@ export function NewTaskBox({ handleNewTask }: NewTaskBoxProps) {
         const data = {
             id: uuid(),
             description: newTask,
-            inActive: true
+            checked: false
         } as Task
 
         handleNewTask(data);

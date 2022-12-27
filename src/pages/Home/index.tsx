@@ -10,7 +10,7 @@ import { Container, Content } from './styles';
 export interface Task {
     id: string;
     description: string;
-    inActive: boolean
+    checked: boolean
 }
 
 export function Home() {
@@ -18,6 +18,20 @@ export function Home() {
 
     function handleNewTask(newTask: Task) {
         setTasks([...tasks, newTask]);
+    }
+
+    function handleChekedTask(task: Task) {
+        setTasks(tasks.map((item: Task) => {
+            if (item.id === task.id) {
+                return {
+                    ...item,
+                    checked: !task.checked
+                }
+            }
+            return {
+                ...item
+            }
+        }))
     }
 
     return (
@@ -36,6 +50,7 @@ export function Home() {
                             <Tasks
                                 key={task.id}
                                 task={task}
+                                checked={handleChekedTask}
                             />
                         ))
                     )
