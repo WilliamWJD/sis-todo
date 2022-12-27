@@ -7,7 +7,8 @@ export const Container = styled.div`
     justify-content: space-between;
 
     input{
-        width: 638px;
+        width: 100%;
+        max-width: 638px;
         padding: 16px 0 16px 16px;
         background-color: ${props => props.theme.colors.gray_500};
         color: ${props => props.theme.colors.gray_100};
@@ -24,6 +25,7 @@ export const Container = styled.div`
         background-color: ${props => props.theme.colors.blueDark};
         border-radius: 8px;
         transition: background-color 0.2s;
+        margin-left: 6px;
     }
 
     button:hover{
