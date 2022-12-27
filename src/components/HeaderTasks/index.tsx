@@ -14,7 +14,11 @@ export function HeaderTasks({ createdTasks, checkedTasks }: HeaderTasks) {
             </BoxTasks>
             <BoxCompleted>
                 <strong>Concluídas</strong>
-                <p>{checkedTasks}</p>
+                {createdTasks === 0 ? (
+                    <p>0</p>
+                ) : (
+                    <p>{checkedTasks} de {createdTasks}</p>
+                )}
             </BoxCompleted>
         </Container>
     )
