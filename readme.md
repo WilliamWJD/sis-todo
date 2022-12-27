@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  ☕ Esse projeto é um desafio
+  ☕ Controle de tarefas pendentes e concluídas
 </h4>
 
 <br>
