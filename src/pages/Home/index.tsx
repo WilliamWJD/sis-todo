@@ -7,27 +7,37 @@ import { Tasks } from '../../components/Tasks';
 
 import { Container, Content } from './styles';
 
+export interface Task {
+    id: string;
+    description: string;
+    inActive: boolean
+}
+
 export function Home() {
-    const [tasks, setTasks] = useState(true);
+    const [tasks, setTasks] = useState<Task[]>([]);
+
+    function handleNewTask(newTask: Task) {
+        setTasks([...tasks, newTask]);
+    }
 
     return (
         <Container>
             <Header />
 
             <Content>
-                <NewTaskBox />
+                <NewTaskBox
+                    handleNewTask={handleNewTask}
+                />
                 <HeaderTasks />
-                {!tasks ?
+                {tasks.length === 0 ?
                     (<EmptyTasks />) :
                     (
-                        <>
-                            <Tasks />
-                            <Tasks />
-                            <Tasks />
-                            <Tasks />
-                            <Tasks />
-                            <Tasks />
-                        </>
+                        tasks.map((task: Task) => (
+                            <Tasks
+                                key={task.id}
+                                task={task}
+                            />
+                        ))
                     )
                 }
             </Content>
